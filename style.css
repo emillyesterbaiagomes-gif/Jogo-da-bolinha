@@ -1,0 +1,167 @@
+@import url('https://googleapis.com');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body {
+    background: radial-gradient(circle at center, #141829 0%, #070913 100%);
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Placar */
+.hud {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    border-radius: 12px;
+    padding: 12px 25px;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #00f3ff, #ff007f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.score-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-box .label {
+    font-size: 0.7rem;
+    color: #8a99b8;
+    letter-spacing: 1.5px;
+}
+
+.score-box .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00f3ff;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+}
+
+/* Área do Canvas */
+.canvas-container {
+    position: relative;
+    width: 600px;
+    height: 520px;
+    border-radius: 16px;
+    border: 2px solid #00f3ff;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2), inset 0 0 25px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    background-color: #090c18;
+    transition: transform 0.05s;
+}
+
+canvas {
+    display: block;
+    cursor: none; /* Esconde o cursor padrão durante o jogo */
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 9, 19, 0.88);
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    gap: 20px;
+    cursor: default;
+}
+
+.overlay h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #fff;
+    text-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f;
+}
+
+.overlay p {
+    font-size: 0.95rem;
+    color: #b0bed9;
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+.final-score {
+    font-size: 1.3rem;
+    color: #00f3ff;
+    background: rgba(0, 243, 255, 0.1);
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Botão Estilizado */
+.glow-btn {
+    margin-top: 10px;
+    padding: 15px 45px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #070913;
+    background: #00f3ff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #00f3ff;
+    transition: all 0.2s ease;
+}
+
+.glow-btn:hover {
+    background: #ffffff;
+    box-shadow: 0 0 30px #00f3ff, 0 0 50px #ffffff;
+    transform: scale(1.05);
+}
+
+.glow-btn:active {
+    transform: scale(0.98);
+}
+
+/* Responsividade básica para telas menores */
+@media (max-width: 630px) {
+    .hud, .canvas-container {
+        width: 95vw;
+    }
+    canvas {
+        width: 100%;
+    }
+}
